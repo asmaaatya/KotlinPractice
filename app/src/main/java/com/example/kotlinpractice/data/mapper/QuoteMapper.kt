@@ -4,7 +4,6 @@ import com.example.kotlinpractice.data.model.beans.QuoteModel
 import com.example.kotlinpractice.data.model.response.quotes.Quote
 import com.example.kotlinpractice.data.model.response.quotes.QuotesResponse
 
-// todo 7- we should add some map for the objects
 object QuoteMapper{
     fun mapToUiModel(quote: Quote): QuoteModel {
         return QuoteModel(

@@ -66,4 +66,11 @@ dependencies {
     // datastore
     implementation("androidx.datastore:datastore-preferences:1.1.1")
 
+    //view model
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
+    //nav controller
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.1")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.5.1")
+
 }
