@@ -1,5 +1,4 @@
 package com.example.kotlinpractice.data.model.response.quotesDetails
-// todo 3 -we should add some response data here
 data class QuoteDetailsResponse(
     val _id: String,
     val author: String,

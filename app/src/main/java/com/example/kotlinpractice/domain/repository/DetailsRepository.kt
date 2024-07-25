@@ -1,7 +1,10 @@
 package com.example.kotlinpractice.domain.repository
 
-import com.example.kotlinpractice.data.model.response.quotesDetails.QuoteDetailsResponse
+import com.example.kotlinpractice.data.model.beans.QuoteDetailsModel
+
+
+
 
 interface DetailsRepository {
-    suspend fun getQuoteById(id:String):QuoteDetailsResponse
+    suspend fun getQuoteById(id:String):QuoteDetailsModel
 }

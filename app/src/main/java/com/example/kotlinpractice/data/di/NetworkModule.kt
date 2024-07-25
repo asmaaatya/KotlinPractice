@@ -3,6 +3,7 @@ package com.example.kotlinpractice.data.di
 import android.content.Context
 import android.util.Log
 import com.example.kotlinpractice.data.local.dataSource.LocalDataStore
+import com.example.kotlinpractice.data.remote.apis.APiService
 import com.example.kotlinpractice.presentation.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -90,6 +92,11 @@ object NetworkModule {
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+    @Provides
+    @Singleton
+    fun provideApiService(retrofit: Retrofit): APiService {
+        return retrofit.create(APiService::class.java)
     }
 
 }
