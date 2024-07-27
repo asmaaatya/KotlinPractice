@@ -1,4 +1,4 @@
-package com.example.kotlinpractice.data.model.beans
+package com.example.kotlinpractice.domain.model
 
 data class QuoteDetailsModel(
     val author: String,

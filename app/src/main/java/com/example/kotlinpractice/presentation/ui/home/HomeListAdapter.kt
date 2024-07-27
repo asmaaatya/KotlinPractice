@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.kotlinpractice.data.model.beans.QuoteModel
+import com.example.kotlinpractice.domain.model.QuoteModel
 import com.example.kotlinpractice.databinding.QuoteListItemBinding
 
 class HomeListAdapter(

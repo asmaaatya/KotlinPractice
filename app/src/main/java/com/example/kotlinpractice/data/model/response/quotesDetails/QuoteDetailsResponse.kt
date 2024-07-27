@@ -8,4 +8,6 @@ data class QuoteDetailsResponse(
     val dateModified: String,
     val length: Int,
     val tags: List<String>
-)
+) {
+    companion object
+}

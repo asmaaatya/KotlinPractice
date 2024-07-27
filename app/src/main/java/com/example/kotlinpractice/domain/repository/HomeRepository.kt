@@ -1,8 +1,8 @@
 package com.example.kotlinpractice.domain.repository
 
-import com.example.kotlinpractice.data.model.beans.QuoteModel
-import com.example.kotlinpractice.data.model.response.quotes.QuotesResponse
+import com.example.kotlinpractice.data.model.request.Result
+import com.example.kotlinpractice.domain.model.QuoteModel
 
 interface HomeRepository {
-    suspend fun getQuotes() :List<QuoteModel>
+    suspend fun getQuotes() :Result<List<QuoteModel>>
 }
