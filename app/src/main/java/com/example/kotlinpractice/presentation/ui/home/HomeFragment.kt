@@ -32,7 +32,7 @@ class HomeFragment : Fragment(), HomeListAdapter.IoClickQuote {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
+homeViewModel.loadQuotes()
         lifecycleScope.launch {
             homeViewModel.quotes.collect { result ->
                 when (result) {

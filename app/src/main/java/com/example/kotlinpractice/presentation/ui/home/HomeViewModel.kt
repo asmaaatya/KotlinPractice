@@ -15,11 +15,8 @@ class HomeViewModel @Inject constructor(private val useCase: HomeUseCase) : View
     private val _quotes = MutableStateFlow<Result<List<QuoteModel>>>(Result.Loading)
     val quotes: MutableStateFlow<Result<List<QuoteModel>>> get() = _quotes
 
-    init {
-        loadQuotes()
-    }
 
-    private fun loadQuotes() {
+     fun loadQuotes() {
         viewModelScope.launch {
             when (val result = useCase.getAllQuotes()) {
                 is Result.Success -> {
