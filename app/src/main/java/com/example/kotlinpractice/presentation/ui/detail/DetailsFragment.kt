@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.kotlinpractice.data.model.request.Result
+import com.example.kotlinpractice.data.model.request.ResultApiCall
 import com.example.kotlinpractice.databinding.FragmentDetailsBinding
 import com.example.kotlinpractice.presentation.ui.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,19 +35,19 @@ class DetailsFragment : Fragment() {
         lifecycleScope.launch {
             detailViewModel.details.collect { result ->
                 when (result) {
-                    is Result.Success -> {
+                    is ResultApiCall.Success -> {
                         binding.progressBar.visibility = View.GONE
                         binding.authorText.text = result.data.author
                         binding.tagText.text = result.data.tags.toString()
                     }
 
-                    is Result.Failure -> {
+                    is ResultApiCall.Failure -> {
                         binding.progressBar.visibility = View.GONE
                         //handle error
                         Toast.makeText(requireContext(), result.message, Toast.LENGTH_LONG).show()
                     }
 
-                    is Result.Loading -> {
+                    is ResultApiCall.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                     }
 

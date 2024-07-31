@@ -72,8 +72,13 @@ dependencies {
     //nav controller
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.1")
     implementation ("androidx.navigation:navigation-ui-ktx:2.5.1")
+
     //testing
-    testImplementation("io.mockk:mockk:1.12.0")
+
+    // mockk
+    testImplementation("io.mockk:mockk-android:1.13.11")
+    testImplementation("io.mockk:mockk-agent:1.13.11")
+
     testImplementation("androidx.arch.core:core-testing:2.2.0")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")

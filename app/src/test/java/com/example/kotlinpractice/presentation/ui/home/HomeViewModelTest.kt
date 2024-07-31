@@ -1,63 +1,61 @@
 package com.example.kotlinpractice.presentation.ui.home
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.kotlinpractice.data.model.request.Result
-import com.example.kotlinpractice.domain.model.QuoteModel
+import com.example.kotlinpractice.domain.repository.HomeRepository
 import com.example.kotlinpractice.domain.useCases.HomeUseCase
+import com.example.kotlinpractice.dummyQuote
+import com.example.kotlinpractice.failureQuotes
+import com.example.kotlinpractice.successQuotes
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class HomeViewModelTest {
-    val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()
-    private val testScope = TestScope(testDispatcher)
-
-    @get:Rule
-    var instantExecutorRule = InstantTaskExecutorRule()
-    lateinit var homeViewModel: HomeViewModel
-    lateinit var homeUseCase: HomeUseCase
-
-    @Before
-    fun setupViewModel() {
-        homeUseCase = mockk()
-        homeViewModel = HomeViewModel(homeUseCase)
-    }
-//Given: Setup the objects and the state of the app that you need for your test.
-//When: Do the actual action on the object you're testing.
-//Then: This is where you actually check what happens when you do the action where you check if the test passed or failed.
 
     @Test
-    fun loadQuotes_success() = runTest {
-        //given list of quotes
-        val quoteList = listOf(QuoteModel("1", "nice quote", "29-7-2024"))
-        //call get quote service
-        coEvery { homeUseCase.getAllQuotes() } coAnswers { Result.Success(quoteList) }
-        //when
+    fun `Given quote When getQuote() Then return success quote`() = runTest {
+
+        // Given
+        val homeRepository: HomeRepository = mockk()
+        val homeUseCase = HomeUseCase(homeRepository)
+        coEvery { homeRepository.getQuote() } coAnswers { dummyQuote }
+
+        // When
+        val result = homeUseCase.getQuote()
+
+        // Then
+        assertEquals(dummyQuote, result)
+    }
+
+    @Test
+    fun `Given quotes When getQuotes() Then return success quotes`() = runTest {
+
+        // Given
+        val homeRepository: HomeRepository = mockk()
+        val homeUseCase = HomeUseCase(homeRepository)
+        coEvery { homeRepository.getQuotes() } coAnswers { successQuotes }
+
+        // When
         val result = homeUseCase.getAllQuotes()
-        //then
-        //assert equals
-        assertEquals(Result.Success(quoteList).data, result)
+
+        // Then
+        assertEquals(successQuotes, result)
     }
 
-
     @Test
-    fun loadQuotes_failure() = runTest {
-        //given error
-        val exception = Exception("Error fetching data")
-        //its failed to get data
-        coEvery { homeUseCase.getAllQuotes() } coAnswers { Result.Failure(exception.message.toString()) }
-        //then
-        assertEquals(
-            Result.Failure("Error fetching data"), "error within data"
-        )
+    fun `Given quotes When getQuotes() Then return failure quotes`() = runTest {
+
+        // Given
+        val homeRepository: HomeRepository = mockk()
+        val homeUseCase = HomeUseCase(homeRepository)
+        coEvery { homeRepository.getQuotes() } coAnswers { failureQuotes }
+
+        // When
+        val result = homeUseCase.getAllQuotes()
+
+        // Then
+        assertEquals(failureQuotes, result)
     }
 }
 

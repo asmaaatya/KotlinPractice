@@ -1,7 +1,7 @@
 package com.example.kotlinpractice.presentation.ui.detail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.kotlinpractice.data.model.request.Result
+import com.example.kotlinpractice.data.model.request.ResultApiCall
 import com.example.kotlinpractice.domain.model.QuoteDetailsModel
 import com.example.kotlinpractice.domain.useCases.DetailsUseCase
 import io.mockk.coEvery
@@ -38,10 +38,10 @@ class DetailViewModelTest {
         val id = "dgfdhdj"
         val quoteDetailsModel = QuoteDetailsModel("author name", listOf("wisdom", "nothing"))
         //when
-        coEvery { detailsUseCase.getDetails(id) } coAnswers { Result.Success(quoteDetailsModel) }
+        coEvery { detailsUseCase.getDetails(id) } coAnswers { ResultApiCall.Success(quoteDetailsModel) }
         //then
         val result = detailsUseCase.getDetails(id)
-        assertEquals(Result.Success(quoteDetailsModel).data, result)
+        assertEquals(ResultApiCall.Success(quoteDetailsModel).data, result)
 
 
     }
@@ -51,12 +51,12 @@ class DetailViewModelTest {
         //given id
         val id = "dgfdhdj"
         val error = "error occured"
-        coEvery { detailsUseCase.getDetails(id) } coAnswers { Result.Failure(error) }
+        coEvery { detailsUseCase.getDetails(id) } coAnswers { ResultApiCall.Failure(error) }
         //when
         val result = detailsUseCase.getDetails(id)
 
         //then
-        assertEquals(Result.Failure(error), result)
+        assertEquals(ResultApiCall.Failure(error), result)
 
 
     }

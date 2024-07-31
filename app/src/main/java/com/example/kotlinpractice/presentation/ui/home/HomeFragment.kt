@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.kotlinpractice.R
-import com.example.kotlinpractice.data.model.request.Result
+import com.example.kotlinpractice.data.model.request.ResultApiCall
 import com.example.kotlinpractice.databinding.FragmentHomeBinding
 import com.example.kotlinpractice.domain.model.QuoteModel
 import com.example.kotlinpractice.presentation.ui.SharedViewModel
@@ -36,18 +36,18 @@ homeViewModel.loadQuotes()
         lifecycleScope.launch {
             homeViewModel.quotes.collect { result ->
                 when (result) {
-                    is Result.Success -> {
+                    is ResultApiCall.Success -> {
                         binding.progressBar.visibility = View.GONE
                         setList(result.data)
                     }
 
-                    is Result.Failure -> {
+                    is ResultApiCall.Failure -> {
                         binding.progressBar.visibility = View.GONE
                         //handle error
                         Toast.makeText(requireContext(), result.message, Toast.LENGTH_LONG).show()
                     }
 
-                    is Result.Loading -> {
+                    is ResultApiCall.Loading -> {
                         binding.progressBar.visibility = View.VISIBLE
                     }
 
