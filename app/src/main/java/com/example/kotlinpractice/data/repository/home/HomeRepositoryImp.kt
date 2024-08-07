@@ -19,9 +19,5 @@ class HomeRepositoryImp @Inject constructor(private val apiService: APiService) 
         }
     }
 
-    override suspend fun getQuote(): QuoteModel {
-        return QuoteModel("1", "nice quote", "29-7-2024")
-    }
-
 
 }

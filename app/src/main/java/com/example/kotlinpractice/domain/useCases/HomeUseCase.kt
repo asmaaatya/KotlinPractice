@@ -11,8 +11,8 @@ class HomeUseCase @Inject constructor(private val homeRepository: HomeRepository
         return homeRepository.getQuotes()
     }
 
-    suspend fun getQuote(): QuoteModel {
-        return homeRepository.getQuote()
-    }
+//    suspend fun getQuote(): QuoteModel {
+//        return homeRepository.getQuote()
+//    }
 
 }

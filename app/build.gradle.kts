@@ -83,4 +83,9 @@ dependencies {
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
+    // Mock web server
+    testImplementation ("com.squareup.okhttp3:mockwebserver:4.10.0")
+    // Google truth for assertion
+    testImplementation ("com.google.truth:truth:1.1.3")
+
 }

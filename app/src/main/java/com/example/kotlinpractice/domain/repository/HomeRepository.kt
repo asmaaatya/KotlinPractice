@@ -5,5 +5,5 @@ import com.example.kotlinpractice.domain.model.QuoteModel
 
 interface HomeRepository {
     suspend fun getQuotes(): ResultApiCall<List<QuoteModel>>
-    suspend fun getQuote(): QuoteModel
+//    suspend fun getQuote(): QuoteModel
 }
