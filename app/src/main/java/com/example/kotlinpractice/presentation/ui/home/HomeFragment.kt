@@ -19,7 +19,7 @@ import com.example.kotlinpractice.presentation.ui.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
+
 class HomeFragment : Fragment(), HomeListAdapter.IoClickQuote {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!

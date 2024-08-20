@@ -7,13 +7,14 @@ import com.example.kotlinpractice.domain.model.QuoteModel
 import com.example.kotlinpractice.domain.useCases.HomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(private val useCase: HomeUseCase) : ViewModel() {
     private val _quotes = MutableStateFlow<ResultApiCall<List<QuoteModel>>>(ResultApiCall.Loading)
-    val quotes: MutableStateFlow<ResultApiCall<List<QuoteModel>>> get() = _quotes
+    val quotes: StateFlow<ResultApiCall<List<QuoteModel>>> get() = _quotes
 
 
      fun loadQuotes() {
