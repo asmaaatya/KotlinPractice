@@ -19,7 +19,11 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "com.example.android.dagger.CustomTestRunner"
+
+        //com.emojitunes.emojis.EmojiTunesTestRunner
+        //com.example.kotlinpractice
+
+       testInstrumentationRunner =   "com.example.kotlinpractice.CustomTestRunner"
 //        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -39,6 +43,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+    configurations.all{
+        resolutionStrategy.force("com.google.code.findbugs:jrs305:3.0.0")
+    }
+
     buildFeatures {
         viewBinding = true
         dataBinding= true
@@ -80,8 +88,12 @@ dependencies {
     //kluentAndroid
     testImplementation ("org.amshove.kluent:kluent-android:1.73")
 // For instrumented tests.
+    // Hilt testing dependency
+//    androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    // Make Hilt generate code in the androidTest folder
     androidTestImplementation ("com.google.dagger:hilt-android-testing:2.44")
-    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.44")
+//    kaptAndroidTest ("com.google.dagger:hilt-android-compiler:$2.44")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.50")
 
     debugImplementation( "androidx.fragment:fragment-testing:1.8.2")
     implementation ("androidx.test:core:1.6.1")
