@@ -6,6 +6,6 @@ import com.example.kotlinpractice.domain.repository.DetailsRepository
 
 class FakeDetailsRepo :DetailsRepository {
     override suspend fun getQuoteById(id: String): ResultApiCall<QuoteDetailsModel> {
-        TODO("Not yet implemented")
+        return ResultApiCall.Success(QuoteDetailsModel(id, listOf("Fake Quote","non fake quote")))
     }
 }
